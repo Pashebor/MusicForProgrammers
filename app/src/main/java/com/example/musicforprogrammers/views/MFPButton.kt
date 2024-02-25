@@ -2,6 +2,7 @@ package com.example.musicforprogrammers.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.AppCompatButton
 import com.example.musicforprogrammers.R
@@ -36,8 +37,14 @@ class MFPButton(
         }
 
         this.background = null
+        this.minHeight = 0
+        this.minWidth = 0
+        this.isAllCaps = false
+        this.minimumWidth = 0
+        this.minimumHeight = 0
+
         this.typeface = resources.getFont(R.font.ibm_medium)
-        this.text = "[${this.text}]"
+        this.text = resources.getString(R.string.button_brackets).format(this.text)
         this.animation = AnimationUtils.loadAnimation(
             context,
             androidx.appcompat.R.anim.abc_grow_fade_in_from_bottom
@@ -45,6 +52,7 @@ class MFPButton(
 
         this.setPadding(0, 0, 0, 0)
         this.setTextColor(context.getColor(textColor))
+        this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
 
         customAttributesValues.recycle()
     }
