@@ -6,9 +6,9 @@
         <!-- Secondary brand color. -->
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/black</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowBackground">@color/black</item>
     </style>
