@@ -13,15 +13,13 @@
         android:layout_marginBottom="20.5dp"
         android:contentDescription="@string/sound_visualizer"
         android:layerType="software"
-        android:paddingHorizontal="22dp"
         android:src="@drawable/dotted" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="fill_horizontal"
-        android:orientation="horizontal"
-        android:paddingHorizontal="22dp">
+        android:orientation="horizontal">
 
         <com.example.musicforprogrammers.views.MFPTextView
             android:layout_width="wrap_content"
@@ -74,7 +72,6 @@
         android:layout_marginBottom="20.5dp"
         android:gravity="fill"
         android:orientation="horizontal"
-        android:paddingHorizontal="22dp"
         >
 
         <com.example.musicforprogrammers.views.MFPTextView
@@ -126,8 +123,7 @@
         android:layout_height="fill_parent"
         android:gravity="start"
         android:orientation="vertical"
-        android:layout_marginBottom="20.5dp"
-        android:paddingHorizontal="22dp">
+        android:layout_marginBottom="20.5dp">
 
         <com.example.musicforprogrammers.views.MFPButton
             android:id="@+id/button_touch"

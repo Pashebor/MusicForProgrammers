@@ -48,6 +48,7 @@
         android:divider="@null"
         android:overScrollMode="never"
         android:scrollbars="none"
+        android:paddingHorizontal="22dp"
         android:listSelector="@android:color/transparent"
         android:paddingBottom="20dp" />
 </LinearLayout>

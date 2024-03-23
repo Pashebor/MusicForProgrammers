@@ -1,11 +1,12 @@
 <com.example.musicforprogrammers.views.MFPTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:textColor="@color/green"
+    android:textColor="@drawable/tracks_list_item_color"
+    android:background="@drawable/tracks_list_item_bg_color"
     android:textSize="18sp"
-    android:paddingHorizontal="22dp"
-    android:paddingVertical="5dp"
+    android:paddingVertical="1dp"
+    android:paddingHorizontal="4dp"
     app:fontType="italic" />
 
 
