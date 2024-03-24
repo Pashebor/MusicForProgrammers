@@ -5,7 +5,6 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -14,14 +13,20 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.musicforprogrammers.R
+import com.example.musicforprogrammers.adapters.TrackListAdapter
 import com.example.musicforprogrammers.api.MusicTrek
 import com.example.musicforprogrammers.models.TrackListModel
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 
 class StartScreenActivity : AppCompatActivity() {
+    private val musicPlayer: MediaPlayer = MediaPlayer()
+    lateinit var currentTrack: MusicTrek
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContentView(R.layout.start_screen)
 
         val tracksListView = findViewById<ListView>(R.id.tracksListView)
@@ -44,13 +49,22 @@ class StartScreenActivity : AppCompatActivity() {
 
         trackListModel.getTracks()
         onPlayTapActionListener()
+        musicPlayer.setOnPreparedListener { player ->
+            player.start()
+        }
     }
 
     private fun fillTrackList(tracks: List<MusicTrek>, listView: ListView) {
         val listViewItems = tracks.map { it.title.replace("Episode ", "") }
-        val arrayAdapter = ArrayAdapter(this, R.layout.list_item, listViewItems)
+        val arrayAdapter = TrackListAdapter(this, R.layout.list_item, listViewItems)
+
+        currentTrack = tracks[0]
 
         listView.adapter = arrayAdapter
+        listView.setOnItemClickListener { _, view, _, id ->
+            currentTrack = tracks[id.toInt()]
+            view.isSelected = true
+        }
     }
 
     private fun onPlayTapActionListener() {
@@ -66,6 +80,14 @@ class StartScreenActivity : AppCompatActivity() {
 
             player.setVolume(beepSoundVolume, beepSoundVolume)
             player.start()
+
+            try {
+                musicPlayer.reset()
+                musicPlayer.setDataSource(currentTrack.trackData?.url)
+                musicPlayer.prepareAsync()
+            } catch (error: IOException) {
+                error.printStackTrace()
+            }
         }
     }
 }

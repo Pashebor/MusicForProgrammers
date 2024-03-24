@@ -4,9 +4,6 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatActivity
-import java.text.FieldPosition
-
 
 class TrackListAdapter(
     private val context: Context,
@@ -20,11 +17,7 @@ class TrackListAdapter(
         this.items = items
     }
 
-    fun getView(convertView: View, parent: ViewGroup?): View {
-        var row: View = convertView
-        val inflater = (context as AppCompatActivity).layoutInflater
-        row = inflater.inflate(layoutResourceId, parent, false)
-
-        return row
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        return super.getView(position, convertView, parent)
     }
 }
