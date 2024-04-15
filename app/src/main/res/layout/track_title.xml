@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="20.5dp"
+    tools:ignore="MissingDefaultResource">
+
+    <com.example.musicforprogrammers.views.MFPTextView
+        android:id="@+id/track_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:fontType="regular" />
+
+    <com.example.musicforprogrammers.views.MFPTextView
+        android:id="@+id/source_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fontType="regular"
+        android:textColor="@color/blue"
+        />
+
+</LinearLayout>

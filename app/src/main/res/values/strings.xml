@@ -13,4 +13,5 @@
     <string name="button_random">random</string>
     <string name="sound_visualizer">Sound Visualizer</string>
     <string name="button_brackets">[%1$s]</string>
+    <string name="source_size">%1$d MB</string>
 </resources>

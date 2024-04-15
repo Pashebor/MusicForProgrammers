@@ -17,11 +17,11 @@ class MusicForProgramming (
 @Root(name = "channel", strict = false)
 class MusicDataResponse (
     @field: ElementList(inline = true)
-    var trekList: List<MusicTrek>? = null
+    var trekList: List<MusicTrack>? = null
 )
 
 @Root(name = "item", strict = false)
-class MusicTrek (
+class MusicTrack (
     @field: Element(name = "title")
     var title: String = "",
     @field: Element(name = "description", required = false)

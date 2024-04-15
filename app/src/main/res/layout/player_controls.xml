@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal"
+        android:orientation="horizontal">
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_placeholder_one"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_placeholder_two"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_placeholder_one"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_placeholder_two"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/text_placeholder_one"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            app:fontType="regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20.5dp"
+        android:gravity="fill"
+        android:orientation="horizontal"
+        >
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_placeholder_time"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_placeholder_three"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_placeholder_points"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_placeholder_three"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_random"
+            app:buttonType="purple" />
+    </LinearLayout>
+</LinearLayout>

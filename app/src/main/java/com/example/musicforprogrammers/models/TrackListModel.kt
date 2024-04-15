@@ -3,15 +3,15 @@ package com.example.musicforprogrammers.models
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.musicforprogrammers.api.Api
-import com.example.musicforprogrammers.api.MusicTrek
+import com.example.musicforprogrammers.api.MusicTrack
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 data class TrackListState(
-    val currentTrack: MusicTrek? = null,
-    val tracks: List<MusicTrek>? = null
+    val currentTrack: MusicTrack? = null,
+    val tracks: List<MusicTrack>? = null
 )
 
 class TrackListModel: ViewModel() {

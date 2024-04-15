@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginBottom="20.5dp"
+    android:gravity="start"
+    android:orientation="vertical">
+
+    <include layout="@layout/track_title" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.musicforprogrammers.views.MFPButton
+            android:id="@+id/button_play_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_play"
+            app:buttonType="green" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:id="@+id/button_play_main_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
+            app:fontType="regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.musicforprogrammers.views.MFPButton
+            android:id="@+id/button_open_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_source"
+            app:buttonType="purple" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:id="@+id/button_open_source_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
+            app:fontType="regular" />
+    </LinearLayout>
+
+    <com.example.musicforprogrammers.views.MFPButton
+        android:id="@+id/button_set_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_favourite"
+        app:buttonType="yellow" />
+</LinearLayout>
