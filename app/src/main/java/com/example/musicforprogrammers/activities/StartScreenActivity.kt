@@ -23,6 +23,7 @@ import java.io.IOException
 class StartScreenActivity : AppCompatActivity() {
     private val musicPlayer: MediaPlayer = MediaPlayer()
     lateinit var currentTrack: MusicTrek
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,7 +42,9 @@ class StartScreenActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 trackListModel.trackState.collect { trackState ->
                     when (trackState.tracks) {
-                        is List<MusicTrek> -> fillTrackList(trackState.tracks, tracksListView)
+                        is List<MusicTrek> -> {
+                            fillTrackList(trackState.tracks, tracksListView)
+                        }
                     }
                 }
             }
@@ -56,14 +59,15 @@ class StartScreenActivity : AppCompatActivity() {
 
     private fun fillTrackList(tracks: List<MusicTrek>, listView: ListView) {
         val listViewItems = tracks.map { it.title.replace("Episode ", "") }
-        val arrayAdapter = TrackListAdapter(this, R.layout.list_item, listViewItems)
+        val arrayAdapter = TrackListAdapter(this, listViewItems)
 
         currentTrack = tracks[0]
 
         listView.adapter = arrayAdapter
-        listView.setOnItemClickListener { _, view, _, id ->
+        listView.setOnItemClickListener { _, _, position, id ->
             currentTrack = tracks[id.toInt()]
-            view.isSelected = true
+            arrayAdapter.setSelectedPosition(position - 1)
+            listView.smoothScrollToPositionFromTop(0, 0, 200)
         }
     }
 
