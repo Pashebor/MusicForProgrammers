@@ -6,12 +6,21 @@
     <string name="text_placeholder_two">[---]</string>
     <string name="text_placeholder_three">[--]</string>
     <string name="text_placeholder_time">--:--:--</string>
+    <string name="text_placeholder_time_null">00:00:00</string>
     <string name="text_placeholder_points" tools:ignore="TypographyEllipsis">...</string>
     <string name="button_play">play</string>
+    <string name="button_stop">stop</string>
     <string name="button_source">source</string>
     <string name="button_favourite">favourite</string>
     <string name="button_random">random</string>
+    <string name="button_prev">prev</string>
+    <string name="button_next">next</string>
+    <string name="button_rewind">-30</string>
+    <string name="button_forward">+30</string>
+    <string name="button_minus_volume">v-</string>
+    <string name="button_plus_volume">v+</string>
     <string name="sound_visualizer">Sound Visualizer</string>
     <string name="button_brackets">[%1$s]</string>
     <string name="source_size">%1$d MB</string>
+    <string name="text_bullet">&#160;•&#160;%1$s</string>
 </resources>

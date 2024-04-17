@@ -10,7 +10,7 @@ enum class MFPFontType(val type: Int) {
     ITALIC(1)
 }
 
-class MFPTextView(
+open class MFPTextView(
     context: Context,
     attr: AttributeSet
     ) : AppCompatTextView(context, attr)
