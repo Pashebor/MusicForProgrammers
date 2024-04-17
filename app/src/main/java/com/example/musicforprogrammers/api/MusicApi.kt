@@ -64,6 +64,6 @@ class TrackData(
 )
 
 interface MusicApi {
-    @GET("rss.xml")
+    @GET("rss.php")
     suspend fun getMusicList(): Response<MusicForProgramming>
 }

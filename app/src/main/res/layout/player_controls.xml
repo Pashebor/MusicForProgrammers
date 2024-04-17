@@ -3,108 +3,157 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="fill_horizontal"
-        android:orientation="horizontal">
-
-        <com.example.musicforprogrammers.views.MFPTextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/text_placeholder_one"
-            android:textColor="@color/grey"
-            android:textSize="20sp"
-            app:fontType="regular" />
-
-        <com.example.musicforprogrammers.views.MFPTextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/text_placeholder_two"
-            android:textColor="@color/grey"
-            android:textSize="20sp"
-            app:fontType="regular" />
-
-        <com.example.musicforprogrammers.views.MFPTextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/text_placeholder_one"
-            android:textColor="@color/grey"
-            android:textSize="20sp"
-            app:fontType="regular" />
-
-        <com.example.musicforprogrammers.views.MFPTextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/text_placeholder_two"
-            android:textColor="@color/grey"
-            android:textSize="20sp"
-            app:fontType="regular" />
-
-        <com.example.musicforprogrammers.views.MFPTextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/text_placeholder_one"
-            android:textColor="@color/grey"
-            android:textSize="20sp"
-            app:fontType="regular" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20.5dp"
-        android:gravity="fill"
+        android:layout_height="32dp"
+        android:layout_gravity="fill_horizontal"
         android:orientation="horizontal"
         >
 
         <com.example.musicforprogrammers.views.MFPTextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:text="@string/text_placeholder_one"
+            android:layout_weight="20"
+            android:paddingBottom="4dp"
+            android:gravity="start"
+            android:textColor="@color/grey"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeStepGranularity="2sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/text_placeholder_two"
+            android:layout_weight="20"
+            android:paddingBottom="4dp"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeStepGranularity="2sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/text_placeholder_one"
+            android:layout_weight="20"
+            android:paddingBottom="4dp"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeStepGranularity="2sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/text_placeholder_two"
+            android:layout_weight="20"
+            android:paddingBottom="4dp"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeStepGranularity="2sp"
+            app:fontType="regular" />
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/text_placeholder_one"
+            android:layout_weight="20"
+            android:paddingBottom="4dp"
+            android:gravity="end"
+            android:textColor="@color/grey"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeStepGranularity="2sp"
+            app:fontType="regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginBottom="20.5dp"
+        android:gravity="fill"
+        android:orientation="horizontal"
+        >
+
+        <com.example.musicforprogrammers.views.MFPTextView
+            android:id="@+id/track_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/text_placeholder_time"
+            android:layout_weight="30"
+            android:gravity="start"
             android:textColor="@color/grey"
-            android:textSize="20sp"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeStepGranularity="2sp"
+            app:autoSizeTextType="uniform"
             app:fontType="regular" />
 
         <com.example.musicforprogrammers.views.MFPTextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:text="@string/text_placeholder_three"
+            android:layout_weight="15"
+            android:gravity="center"
             android:textColor="@color/grey"
-            android:textSize="20sp"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeStepGranularity="2sp"
             app:fontType="regular" />
 
         <com.example.musicforprogrammers.views.MFPTextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:text="@string/text_placeholder_points"
             android:textColor="@color/grey"
-            android:textSize="20sp"
+            android:gravity="center"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeTextType="uniform"
+            app:autoSizeStepGranularity="2sp"
             app:fontType="regular" />
 
         <com.example.musicforprogrammers.views.MFPTextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:text="@string/text_placeholder_three"
+            android:layout_weight="15"
             android:textColor="@color/grey"
-            android:textSize="20sp"
+            android:gravity="center"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeStepGranularity="2sp"
             app:fontType="regular" />
 
         <com.example.musicforprogrammers.views.MFPButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:text="@string/button_random"
+            android:layout_weight="30"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            android:gravity="end"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeStepGranularity="2sp"
             app:buttonType="purple" />
     </LinearLayout>
 </LinearLayout>

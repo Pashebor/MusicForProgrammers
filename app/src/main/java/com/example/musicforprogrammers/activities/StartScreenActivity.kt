@@ -7,7 +7,6 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -18,22 +17,28 @@ import com.example.musicforprogrammers.R
 import com.example.musicforprogrammers.adapters.TrackListAdapter
 import com.example.musicforprogrammers.api.MusicTrack
 import com.example.musicforprogrammers.models.TrackListModel
+import com.example.musicforprogrammers.views.MFPButton
 import com.example.musicforprogrammers.views.MFPTextView
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 
 class StartScreenActivity : AppCompatActivity() {
     private val musicPlayer: MediaPlayer = MediaPlayer()
     private lateinit var currentTrack: MusicTrack
+    private var trackPlayingTime: Int = 0
+    private val calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         setContentView(R.layout.start_screen)
 
         val tracksListView = findViewById<ListView>(R.id.tracksListView)
+
         val inflater = layoutInflater
         val header = inflater.inflate(R.layout.header_layout, tracksListView, false) as ViewGroup
         tracksListView.addHeaderView(header, null, false)
@@ -54,9 +59,27 @@ class StartScreenActivity : AppCompatActivity() {
         }
 
         trackListModel.getTracks()
-        onPlayTapActionListener()
+        onMainControlsTapActionListener()
         musicPlayer.setOnPreparedListener { player ->
             player.start()
+            val trackTime = findViewById<MFPTextView>(R.id.track_time)
+
+
+            lifecycleScope.launch {
+                while (musicPlayer.isPlaying) {
+                    delay(1000)
+                    trackPlayingTime += 1000
+
+                    calendar.set(Calendar.HOUR_OF_DAY, 0)
+                    calendar.set(Calendar.MINUTE, 0)
+                    calendar.set(Calendar.SECOND, 0)
+                    calendar.set(Calendar.MILLISECOND, trackPlayingTime)
+
+                    val time = SimpleDateFormat("HH:mm:ss").format(calendar.time)
+
+                    trackTime.text = time
+                }
+            }
         }
     }
 
@@ -99,11 +122,24 @@ class StartScreenActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
     }
-    private fun onPlayTapActionListener() {
-        val button = findViewById<Button>(R.id.button_play_main)
+
+    private fun onMainControlsTapActionListener() {
+        val buttonPlay = findViewById<MFPButton>(R.id.button_play_main)
+        val buttonSource = findViewById<MFPButton>(R.id.button_open_source)
+        val buttonFavourite = findViewById<MFPButton>(R.id.button_set_favourite)
         val player = MediaPlayer.create(this, R.raw.button_tap_sound)
 
-        button.setOnClickListener {
+        buttonFavourite.setOnClickListener {
+            musicPlayer.stop()
+        }
+
+        buttonSource.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(currentTrack.trackData?.url))
+
+            startActivity(browserIntent)
+        }
+
+        buttonPlay.setOnClickListener {
             val phoneAudio: AudioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
             val currentVolume = phoneAudio.getStreamVolume(AudioManager.STREAM_MUSIC).toFloat()
             val maxVolume = phoneAudio.getStreamMaxVolume(AudioManager.STREAM_MUSIC).toFloat()
@@ -114,6 +150,7 @@ class StartScreenActivity : AppCompatActivity() {
             player.start()
 
             try {
+                trackPlayingTime = 0
                 musicPlayer.reset()
                 musicPlayer.setDataSource(currentTrack.trackData?.url)
                 musicPlayer.prepareAsync()
