@@ -22,5 +22,6 @@
     <string name="sound_visualizer">Sound Visualizer</string>
     <string name="button_brackets">[%1$s]</string>
     <string name="source_size">%1$d MB</string>
+    <string name="percentage">%1$d\%%</string>
     <string name="text_bullet">&#160;•&#160;%1$s</string>
 </resources>

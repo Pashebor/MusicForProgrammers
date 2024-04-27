@@ -18,7 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.musicforprogrammers.R
 import com.example.musicforprogrammers.adapters.TrackListAdapter
-import com.example.musicforprogrammers.api.MusicTrack
+import com.example.musicforprogrammers.data.MusicTrack
 import com.example.musicforprogrammers.models.TrackListModel
 import com.example.musicforprogrammers.views.MFPButton
 import com.example.musicforprogrammers.views.MFPTextView
@@ -57,6 +57,7 @@ class StartScreenActivity : AppCompatActivity() {
                             fillTrackList(trackState.tracks, tracksListView)
                         }
                     }
+
                 }
             }
         }

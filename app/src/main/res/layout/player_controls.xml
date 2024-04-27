@@ -11,6 +11,7 @@
     <com.example.musicforprogrammers.views.ScrollableMFPTextView
         android:id="@+id/scrollable_title"
         android:layout_width="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_height="26dp"
         android:textColor="@color/grey"
         app:autoSizeTextType="uniform"
@@ -21,8 +22,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="fill"
+        android:layout_marginBottom="4dp"
         >
 
         <com.example.musicforprogrammers.views.MFPButton
@@ -32,11 +35,9 @@
             android:text="@string/button_prev"
             android:layout_weight="20"
             android:gravity="start"
+            android:textAlignment="textStart"
             app:buttonType="green"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="18sp"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeStepGranularity="2sp"
+            android:textSize="18sp"
             />
 
         <com.example.musicforprogrammers.views.MFPButton
@@ -46,11 +47,9 @@
             android:text="@string/button_rewind"
             android:layout_weight="20"
             android:gravity="center"
+            android:textAlignment="center"
             app:buttonType="green"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="18sp"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeStepGranularity="2sp"
+            android:textSize="18sp"
             />
 
         <com.example.musicforprogrammers.views.MFPButton
@@ -60,11 +59,9 @@
             android:text="@string/button_play"
             android:layout_weight="20"
             android:gravity="center"
+            android:textAlignment="center"
             app:buttonType="green"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="18sp"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeStepGranularity="2sp"
+            android:textSize="18sp"
             />
 
         <com.example.musicforprogrammers.views.MFPButton
@@ -73,12 +70,10 @@
             android:layout_height="match_parent"
             android:text="@string/button_forward"
             android:layout_weight="20"
-            android:gravity="end"
+            android:gravity="center"
+            android:textAlignment="center"
             app:buttonType="green"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="18sp"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeStepGranularity="2sp"
+            android:textSize="18sp"
             />
 
         <com.example.musicforprogrammers.views.MFPButton
@@ -88,17 +83,15 @@
             android:text="@string/button_next"
             android:layout_weight="20"
             android:gravity="end"
+            android:textAlignment="textEnd"
             app:buttonType="green"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="18sp"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeStepGranularity="2sp"
+            android:textSize="18sp"
             />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20.5dp"
         android:gravity="fill"
         android:orientation="horizontal"
@@ -106,65 +99,34 @@
 
         <com.example.musicforprogrammers.views.MFPTextView
             android:id="@+id/track_time"
-            android:layout_width="100dp"
             android:layout_height="match_parent"
+            android:layout_width="wrap_content"
             android:text="@string/text_placeholder_time_null"
             android:gravity="start"
-            android:layout_weight="0"
             android:textColor="@color/grey"
-            app:autoSizeMinTextSize="18sp"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeStepGranularity="2sp"
+            android:layout_marginEnd="5dp"
+            android:textSize="18sp"
             app:autoSizeTextType="uniform"
             app:fontType="regular" />
 
-        <com.example.musicforprogrammers.views.MFPButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/button_minus_volume"
-            android:layout_weight="20"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/volume"
             android:gravity="start"
-            app:buttonType="purple"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="18sp"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeStepGranularity="2sp" />
-
-        <com.example.musicforprogrammers.views.MFPTextView
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:text="100%"
-            android:textColor="@color/grey"
-            android:gravity="center"
-            app:autoSizeMinTextSize="18sp"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeTextType="uniform"
-            app:autoSizeStepGranularity="2sp"
-            app:fontType="regular" />
-
-        <com.example.musicforprogrammers.views.MFPButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/button_plus_volume"
-            android:layout_weight="20"
-            android:gravity="end"
-            app:buttonType="purple"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="18sp"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeStepGranularity="2sp" />
+            android:name="com.example.musicforprogrammers.views.VolumeControlsFragment"
+            >
+        </androidx.fragment.app.FragmentContainerView>
 
         <com.example.musicforprogrammers.views.MFPButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/button_random"
-            android:layout_weight="30"
             app:autoSizeTextType="uniform"
             app:autoSizeMinTextSize="18sp"
             android:gravity="end"
-            app:autoSizeMaxTextSize="24sp"
-            app:autoSizeStepGranularity="2sp"
+            android:textSize="18sp"
             app:buttonType="purple" />
     </LinearLayout>
 </LinearLayout>

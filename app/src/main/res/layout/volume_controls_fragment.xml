@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/volume_controls"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="8dp"
+    android:gravity="fill"
+    android:orientation="horizontal">
+
+    <com.example.musicforprogrammers.views.MFPButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="35"
+        android:gravity="start"
+        android:text="@string/button_minus_volume"
+        android:textSize="18sp"
+        app:buttonType="purple" />
+
+    <com.example.musicforprogrammers.views.MFPTextView
+        android:id="@+id/sound_volume"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="30"
+        android:gravity="center"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
+        app:fontType="regular" />
+
+    <com.example.musicforprogrammers.views.MFPButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="35"
+        android:gravity="end"
+        android:text="@string/button_plus_volume"
+        android:textSize="18sp"
+        app:buttonType="purple" />
+</LinearLayout>

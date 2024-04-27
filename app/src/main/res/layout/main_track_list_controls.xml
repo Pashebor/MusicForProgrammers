@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_play"
+            android:textSize="18sp"
             app:buttonType="green" />
 
         <com.example.musicforprogrammers.views.MFPTextView
@@ -41,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_source"
+            android:textSize="18sp"
             app:buttonType="purple" />
 
         <com.example.musicforprogrammers.views.MFPTextView
@@ -58,5 +60,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_favourite"
+        android:textSize="18sp"
         app:buttonType="yellow" />
 </LinearLayout>

@@ -11,6 +11,7 @@
         android:layout_height="5dp"
         android:contentDescription="@string/sound_visualizer"
         android:layerType="software"
+        android:layout_marginBottom="4dp"
         android:src="@drawable/dotted" />
 
     <include layout="@layout/player_controls_stub"/>

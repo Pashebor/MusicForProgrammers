@@ -2,7 +2,6 @@ package com.example.musicforprogrammers.views
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.AppCompatButton
 import com.example.musicforprogrammers.R
@@ -52,7 +51,6 @@ class MFPButton(
 
         this.setPadding(0, 0, 0, 0)
         this.setTextColor(context.getColor(textColor))
-        this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
 
         customAttributesValues.recycle()
     }
