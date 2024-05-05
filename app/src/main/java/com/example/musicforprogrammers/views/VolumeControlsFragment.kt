@@ -25,6 +25,15 @@ class VolumeControlsFragment: Fragment(R.layout.volume_controls_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         val viewModel = ViewModelProvider(activity!!)[VolumeModel::class.java]
+        val volumeUpBtn = view.findViewById<MFPButton>(R.id.volume_up)
+        val volumeDownBtn = view.findViewById<MFPButton>(R.id.volume_down)
+
+        volumeUpBtn.setOnClickListener {
+            viewModel.volumeUp()
+        }
+        volumeDownBtn.setOnClickListener {
+            viewModel.volumeDown()
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.volumeState.collect { volumeData ->
