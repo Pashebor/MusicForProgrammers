@@ -1,15 +1,9 @@
 package com.example.musicforprogrammers.activities
 
-import android.content.Context
 import android.content.Intent
-import android.media.AudioManager
-import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -22,19 +16,12 @@ import com.example.musicforprogrammers.data.MusicTrack
 import com.example.musicforprogrammers.models.TrackListModel
 import com.example.musicforprogrammers.views.MFPButton
 import com.example.musicforprogrammers.views.MFPTextView
-import com.example.musicforprogrammers.views.ScrollableMFPTextView
+import com.example.musicforprogrammers.views.PlayerControlsFragment
 import kotlinx.coroutines.launch
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.Calendar
 
 
 class StartScreenActivity : AppCompatActivity() {
-    private val musicPlayer: MediaPlayer = MediaPlayer()
     private lateinit var currentTrack: MusicTrack
-    private var trackPlayingTime: Int = 0
-    private val calendar = Calendar.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -64,10 +51,6 @@ class StartScreenActivity : AppCompatActivity() {
 
         trackListModel.getTracks()
         onMainControlsTapActionListener()
-        musicPlayer.setOnPreparedListener { player ->
-            player.start()
-            runTrackTimer()
-        }
     }
 
     private fun fillTrackList(tracks: List<MusicTrack>, listView: ListView) {
@@ -85,35 +68,16 @@ class StartScreenActivity : AppCompatActivity() {
         }
     }
 
-    private fun runTrackTimer() {
-        val trackTime = findViewById<MFPTextView>(R.id.track_time)
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            trackPlayingTime += 1000
-
-            if (musicPlayer.isPlaying) {
-                lifecycleScope.launch {
-                    calendar.set(Calendar.HOUR_OF_DAY, 0)
-                    calendar.set(Calendar.MINUTE, 0)
-                    calendar.set(Calendar.SECOND, 0)
-                    calendar.set(Calendar.MILLISECOND, trackPlayingTime)
-
-                    val time = SimpleDateFormat("HH:mm:ss").format(calendar.time)
-
-                    trackTime.text = time
-                    runTrackTimer()
-                }
-            }
-        }, 1000L)
-    }
-
     private fun setCurrentTrackData(track: MusicTrack) {
         val mainPlayBtnLabel = findViewById<MFPTextView>(R.id.button_play_main_label)
         val sourceBtnLabel = findViewById<MFPTextView>(R.id.button_open_source_label)
         val trackTitle = findViewById<MFPTextView>(R.id.track_title)
         val sourceLink = findViewById<MFPTextView>(R.id.source_link)
+        val playerControlsFragment = supportFragmentManager.findFragmentById(R.id.player_controls) as PlayerControlsFragment
+
 
         this.currentTrack = track
+        playerControlsFragment.setCurrentTrack(track)
 
         trackTitle.text = track.title
         mainPlayBtnLabel.text = track.duration
@@ -132,58 +96,11 @@ class StartScreenActivity : AppCompatActivity() {
         }
     }
 
-    private fun onPlayStopsActionListener(buttons: List<MFPButton>) {
-        val player = MediaPlayer.create(this, R.raw.button_tap_sound)
-        val playerControls = findViewById<LinearLayout>(R.id.player_controls)
-        val playerControlsStub = findViewById<LinearLayout>(R.id.player_controls_stub)
-        val scrollableTitle = findViewById<ScrollableMFPTextView>(R.id.scrollable_title)
-        val phoneAudio: AudioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        val currentVolume = phoneAudio.getStreamVolume(AudioManager.STREAM_MUSIC).toFloat()
-        val maxVolume = phoneAudio.getStreamMaxVolume(AudioManager.STREAM_MUSIC).toFloat()
-        val backwardPercentage = (100f - (currentVolume / maxVolume * 100f)) / 100f
-        val beepSoundVolume = if (backwardPercentage < 0.1f) 0.1f else backwardPercentage
-
-        playerControls.visibility = LinearLayout.VISIBLE
-        playerControlsStub.visibility = LinearLayout.GONE
-        scrollableTitle.text = getString(R.string.text_bullet, currentTrack.title).repeat(5)
-
-        player.setVolume(beepSoundVolume, beepSoundVolume)
-        player.start()
-
-        if (musicPlayer.isPlaying) {
-            musicPlayer.pause()
-
-            buttons.forEach { button ->
-                button.text = getString(R.string.button_brackets, getString(R.string.button_play))
-            }
-
-            return
-        }
-
-        buttons.forEach { button ->
-            button.text = getString(R.string.button_brackets, getString(R.string.button_stop))
-        }
-
-        if (trackPlayingTime != 0) {
-            musicPlayer.start()
-
-            return
-        }
-
-        try {
-            trackPlayingTime = 0
-            musicPlayer.reset()
-            musicPlayer.setDataSource(currentTrack.trackData?.url)
-            musicPlayer.prepareAsync()
-        } catch (error: IOException) {
-            error.printStackTrace()
-        }
-    }
-
     private fun onMainControlsTapActionListener() {
         val buttonPlayStopMain = findViewById<MFPButton>(R.id.button_play_main)
-        val buttonPlayStop = findViewById<MFPButton>(R.id.button_play_stop)
         val buttonSource = findViewById<MFPButton>(R.id.button_open_source)
+        val playerControlsFragment = supportFragmentManager.findFragmentById(R.id.player_controls) as PlayerControlsFragment
+
 
         buttonSource.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(currentTrack.trackData?.url))
@@ -192,10 +109,7 @@ class StartScreenActivity : AppCompatActivity() {
         }
 
         buttonPlayStopMain.setOnClickListener {
-            onPlayStopsActionListener(listOf(buttonPlayStopMain, buttonPlayStop))
-        }
-        buttonPlayStop.setOnClickListener {
-            onPlayStopsActionListener(listOf(buttonPlayStopMain, buttonPlayStop))
+            playerControlsFragment.onPlayStopsActionListener()
         }
     }
 }

@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="88dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="88dp">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="5dp"
+        android:layout_marginBottom="4dp"
         android:contentDescription="@string/sound_visualizer"
         android:layerType="software"
-        android:layout_marginBottom="4dp"
         android:src="@drawable/dotted" />
 
-    <include layout="@layout/player_controls_stub"/>
-    <include layout="@layout/player_controls" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/player_controls"
+        android:layout_width="match_parent"
+        android:name="com.example.musicforprogrammers.views.PlayerControlsFragment"
+        android:layout_height="wrap_content" />
+
     <include layout="@layout/main_track_list_controls" />
 </LinearLayout>
